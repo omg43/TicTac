@@ -26,14 +26,18 @@ public class GameManager : MonoBehaviour
 
     public void OnCellClicked(int index)
     {
-        if (currentState == GameState.GameOver || m_board[index] == "X" || m_board[index] == "O")
+        if (currentState == GameState.GameOver)
             return;
 
         string symbol = (currentState == GameState.PlayerXTurn) ? "X" : "O";
-
         m_count++;
-
         Debug.Log($"curret State {symbol}");
+
+        //TODO
+        if(m_board[index] == "X" || m_board[index] == "O")
+        {
+
+        }
 
         m_board[index] = symbol;
 
@@ -76,16 +80,6 @@ public class GameManager : MonoBehaviour
             }
         }
         return false;
-    }
-
-    bool IsBoardFull()
-    {
-        foreach (string cell in m_board)
-        {
-            if (cell != "X" || cell != "O")
-                return false;
-        }
-        return true;
     }
 
     private void Winner(bool isWin)
